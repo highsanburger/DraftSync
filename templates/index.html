@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DraftSync!</title>
+    <script src="https://unpkg.com/htmx.org@1.9.6"></script>
+    <link rel="stylesheet" href="/static/index.css" />
+  </head>
+  <body>
+    Welcome to DraftSync!
+
+    <div id="deviceName">
+      <!-- <button type="submit" hx-get="/connect" hx-trigger="click" hx-target="#ass"> -->
+      <!-- Connect -->
+      <!-- </button> -->
+
+      <form hx-post="/connect" hx-trigger="submit" hx-target="#deviceName">
+        <label for="deviceNameInput">Enter Device Name:</label>
+        <input type="text" id="deviceNameInput" name="deviceName" required />
+        <button type="submit">Connect</button>
+      </form>
+    </div>
+    <div id="files"></div>
+    <!-- <div id="fileUpload">Upload files.</div> -->
+
+    <form hx-encoding="multipart/form-data" hx-post="/upload">
+      <input type="file" name="file" />
+      <button>Upload</button>
+    </form>
+    <!-- <div id="fileDownload">Download files.</div> -->
+  </body>
+</html>
