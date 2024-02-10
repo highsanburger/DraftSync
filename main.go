@@ -1,11 +1,18 @@
 package main
 
 import (
-	// "fmt"
+	"fmt"
 	"html/template"
 	"log"
+	// "math/rand"
+	"github.com/schollz/peerdiscovery"
 	"net/http"
 )
+
+// type person struct {
+//     name string
+//     age  int
+// }
 
 func main() {
 
@@ -25,4 +32,9 @@ func main() {
 
 	log.Println("App running on 8000...")
 	log.Fatal(http.ListenAndServe(":8000", nil))
+
+	discoveries, _ := peerdiscovery.Discover(peerdiscovery.Settings{Limit: 1})
+	for _, d := range discoveries {
+		fmt.Printf("discovered '%s'\n", d.Address)
+	}
 }
